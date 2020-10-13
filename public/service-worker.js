@@ -1,3 +1,4 @@
+
 const FILES_TO_CACHE = [
   "/",
   "/index.html",
@@ -9,6 +10,7 @@ const FILES_TO_CACHE = [
   "/icons/icon-512x512.png",
   "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css",
   "https://cdn.jsdelivr.net/npm/chart.js@2.8.0",
+  "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
 ];
 
 const CACHE_NAME = "static-cache-v2";
@@ -73,7 +75,6 @@ self.addEventListener("fetch", function (evt) {
   }
 
   // if the request is not for the API, serve static assets using "offline-first" approach.
-  // see https://developers.google.com/web/fundamentals/instant-and-offline/offline-cookbook#cache-falling-back-to-network
   evt.respondWith(
     caches.open(CACHE_NAME).then((cache) => {
       return caches.match(evt.request).then(function (response) {
