@@ -3,7 +3,15 @@ body {
   font-family: Arial;
 }
 
+.jumbotron {
+  background-color:teal;
+  color: white;
+  margin: 0px;
+}
+
 button, input {
+  margin-top: 1rem;
+  margin-left: 1rem;
   font-size: 100%;
   font-family: Arial;
 }
@@ -34,11 +42,11 @@ tr:nth-child(even) {
 
 .total {
   font-size: 150%;
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 .form {
-  margin-top: 25px;
+  margin-top: 15px;
   width: 100%;
 }
 
@@ -48,4 +56,13 @@ tr:nth-child(even) {
   overflow: auto;
   width: 90%;
   margin: 0 auto;
+}
+
+.card {
+  padding: auto, 10px, 15px, 10px;
+  margin-bottom: 1.5rem;
+}
+
+.row {
+  margin: 0px;
 }
