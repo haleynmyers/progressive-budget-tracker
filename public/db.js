@@ -4,9 +4,6 @@ const request = window.indexedDB.open("budget", 1);
 request.onupgradeneeded = function (event) {
   db = event.target.result;
   const pending = db.createObjectStore("pending", { autoIncrement: true });
-  pending.createIndex("transactionName", "name");
-  pending.createIndex("transactionValue", "value");
-  pending.createIndex("transactionDate", "date");
 };
 
 request.onsuccess = function (event) {

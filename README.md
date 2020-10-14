@@ -2,7 +2,7 @@
 ![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)
 
 ## Description
-Enter your expenses and income into the budgeting app for a quick visual of your funds. The app will automatically update the expense chart and graph. If you are offline, the running total will update, and the chart and graph will update when you get back online.
+Enter your expenses and income into the budgeting app for a quick visual of your funds. The app will automatically update the expense chart and graph. If you are offline, it will update the app with the cached data until you get back online.
 
 ![Budget App Demo](./public/budget-demo.gif)
 
@@ -24,6 +24,7 @@ If you wish to clone the code locally, you will need to run
 
 ## Usage
 Used the deployed site provided above.
+Or if cloning locally, run `npm start` after the dependencies have been installed.
 
 ## License
 ![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)
