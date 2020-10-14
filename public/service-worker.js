@@ -1,4 +1,3 @@
-
 const FILES_TO_CACHE = [
   "/",
   "/index.html",
@@ -10,7 +9,7 @@ const FILES_TO_CACHE = [
   "/icons/icon-512x512.png",
   "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css",
   "https://cdn.jsdelivr.net/npm/chart.js@2.8.0",
-  "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+  "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css",
 ];
 
 const CACHE_NAME = "static-cache-v2";
@@ -51,33 +50,29 @@ self.addEventListener("fetch", function (evt) {
   // cache successful requests to the API
   if (url.includes("/api/")) {
     evt.respondWith(
-      caches
-        .open(DATA_CACHE_NAME)
-        .then((cache) => {
-          return fetch(evt.request)
-            .then((response) => {
-              // If the response was good, clone it and store it in the cache.
-              if (response.status === 200) {
-                cache.put(evt.request.url, response.clone());
-              }
+      caches.open(DATA_CACHE_NAME).then((cache) => {
+        return fetch(evt.request)
+          .then((response) => {
+            // If the response was good, clone it and store it in the cache.
+            if (response.status === 200) {
+              cache.put(evt.request, response.clone());
+            }
 
-              return response;
-            })
-            .catch((err) => {
-              // Network request failed, try to get it from the cache.
-              return cache.match(evt.request);
-            });
-        })
-        .catch((err) => console.log(err))
+            return response;
+          })
+          .catch((err) => {
+            // Network request failed, try to get it from the cache.
+            return cache.match(evt.request);
+          });
+      })
     );
-
     return;
   }
 
   // if the request is not for the API, serve static assets using "offline-first" approach.
   evt.respondWith(
     caches.open(CACHE_NAME).then((cache) => {
-      return caches.match(evt.request).then(function (response) {
+      return caches.match(evt.request).then((response) => {
         return response || fetch(evt.request);
       });
     })
